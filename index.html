@@ -255,7 +255,11 @@ var groupedOverlays = {
         "London": {
           "<img src = 'https://raw.githubusercontent.com/ThamesEstuaryPartnership/barrier/master/boroughs.jpeg' width='14' height='13'>Boroughs": geojsonLayerBoroughs
         }};
-var bounds = L.latLngBounds([[51.678200, -0.500250], [51.678200, 0.253993], [51.366800, 0.253993], [51.366800, -0.500250]]);
+var bounds = L.latLngBounds([
+  [51.7143, -0.5452],
+  [51.3195, 0.2898],
+  [51.3195, 0.2898],
+  [51.3668, -0.5452]]);
 map.fitBounds(bounds);
 L.easyButton('<i class="fa fa-home" style="font-size:15px;"></i>',
 function(){
