@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+  <style>
+  img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]{display:none;}
+  </style>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+
+        <form enctype="multipart/form-data" class="form-horizontal" role="row" method="POST" action="index.php">
+          <br>
+          <br>
+          <div class="form-group">
+            <label for="name" class="col"><span class="glyphicon glyphicon-map-marker"></span> What type of barrier?</label>
+            <div class="col-md">
+              <textarea class="form-control" rows="2" id="name" name="name" placeholder="For example: weir, sluice, lock, etc. Please put NA if unsure."></textarea>
+                <?php echo "<p class='text-danger'></p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="gps" class="col"><span class="glyphicon glyphicon-globe"></span> What is the location of the barrier (address, lat/long or grid reference)?</label>
+            <div class="col-md">
+              <textarea class="form-control" rows="2" id="gps" name="gps" placeholder="Please put NA if unsure."></textarea>
+              <?php echo "<p class='text-danger'></p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="detail" class="col"><span class="glyphicon glyphicon-pencil"></span> Please provide more details:</label>
+            <div class="col-md">
+              <textarea id = "detail", class="form-control" rows="2" name="detail" placeholder="For example is there a fish or eel pass present? Please put NA if unsure."></textarea>
+              <?php echo "<p class='text-danger'></p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="file" class="col"><span class="glyphicon glyphicon-camera"></span> Upload images of the barrier:</label>
+            <div class="col-md">
+              <input name="my_file" id = "file" type="file" multiple class="form-control" data-show-preview="false">
+              <?php echo "<p class='text-danger'></p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sender_email" class="col"><span class="glyphicon glyphicon-send"></span> Please enter your email address:</label>
+            <div class="col-md">
+              <input type="sender_email" class="form-control" id="sender_email" name="sender_email" placeholder="example@domain.com">
+              <?php echo "<p class='text-danger'></p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md">
+              <button type="Submit" class="btn btn-primary btn-md" style="z-index: 1;">
+                  Submit
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md">
+              <?php echo $result; ?>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
