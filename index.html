@@ -159,7 +159,6 @@
     </div>
   </div>
 </div>
-<br>
 
 <!-- Second Container -->
 <div id = "Map" class = "container-fluid bg-2 text-center">
@@ -202,7 +201,7 @@ var geojsonLayerBarriers = new L.GeoJSON.AJAX("https://raw.githubusercontent.com
     marker.bindPopup('</h1><p>Feature: '+feature.properties.Feature+'</h1><p>Pass: '+feature.properties.Pass+'</p>')
     return marker;}
 });
-geojsonLayerBarriers.addTo(map);
+
 var ThamesStyle = {
         "color": "#2e5b96",
         "weight": 1,
@@ -267,7 +266,7 @@ var bounds = L.latLngBounds([
   [51.7143, -0.5452],
   [51.3195, 0.2898],
   [51.3195, 0.2898],
-  [51.2999, -0.5452]]);
+  [51.3111, -0.5452]]);
 map.fitBounds(bounds);
 L.easyButton('<i class="fa fa-home" style="font-size:15px;"></i>',
 function(){
