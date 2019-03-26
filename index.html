@@ -114,7 +114,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#About">About</a></li>
-        <li><a href="#map">Map</a></li>
+        <li><a href="#Map">Map</a></li>
         <li><a href="#Barrier Information Form">Barrier Information Form</a></li>
       </ul>
     </div>
@@ -128,20 +128,20 @@
   <h5 class = "line-height:2, text-justify">
     In the UK we have fundamentally changed the way our rivers work, straightening and deepening their channels to get water off the land as quickly as possible.
     This has effectively turned them into water chutes, which benefited our agricultural and industrial industries by providing drainage and water transport corridors.
-    We have also built <b>weirs</b> and <b>sluices</b> to control the water flow.  <br> <br>
+    We have also built <b>weirs</b> and <b>locks</b> to control the water flow. <br><br>
     But this fragmentation has led to some major problems. A river is meant to meander across the landscape and have areas either side that can flood safely,
-    called <b>floodplains</b>. The meandering slows the waterflow, stopping flash floods and creating pockets of habitat for wildlife and plants. Floodplains allow
+    called floodplains. The meandering slows the waterflow, stopping flash floods and creating pockets of habitat for wildlife and plants. Floodplains allow
     for natural drainage and create wetlands that combat pollution and create pockets of habitat that are very important for migratory fish. The lack of them
-    has contributed to the decline of some species, as have sluices and other barriers to swimming upstream. Diadromous fish, such as the <b>European eel</b>, <b>bass</b>,
-    <b>sea lamprey</b> and <b>flounder</b>, must be able to migrate between marine and freshwater habitats to reach their breeding, nursery and feeding grounds. <br> <br>
+    has contributed to the decline of some species, as have sluices and other barriers to swimming upstream. Diadromous fish, such as the European eel, bass,
+    sea lamprey and flounder, must be able to migrate between marine and freshwater habitats to reach their breeding, nursery and feeding grounds. <br><br>
     Various EU directives and national legislation require improvements to our rivers and, in turn, fish migration. Some great work has already been done
     to ‘re-meander’ rivers, restore wetlands and reconnect floodplains. And technical solutions to man-made barriers – collectively known as <b>“fish passes”</b> – are
     helping to recreate fishes’ natural migration routes. Although they vary in form and complexity, many enable fish to navigate barriers by swimming and leaping
-    up a series of low steps leading into the water on the other side. <br> <br>
-    By bringing together all the relevant data on fish migration barriers across the greater Thames estuary, we will be able to identify entire migratory routes
-    and create a road map of the ‘major highways’, ‘A-roads’ and ‘B-roads’ that the fish would use if there were no barriers preventing them. As well as helping
-    to prioritise where fish passes are needed, the completed road map will help to identify opportunities for restoring habitat during work on sea or flood defences,
-    river restoration and land development.</h5>
+    up a series of low steps leading into the water on the other side. <br><br>
+    Thames Estuary Partnership has been working on an exciting project called the 'Greater Thames Estuary Fish Migration Roadmap' and <b>we need your help to gather data on barriers.</b> <br><br>
+    With the data collected will be able to identify entire migratory routes and create a road map of the ‘major highways’, ‘A-roads’ and ‘B-roads’ that the fish
+    would use if there were no barriers preventing them. As well as helping to prioritise where fish passes are needed, the completed road map will help to identify
+    opportunities for restoring habitat during work on sea or flood defences, river restoration and land development. </h5>
 </div>
 <div class = "container-fluid bg-1 text-center">
 <div class="row">
@@ -162,9 +162,17 @@
 <br>
 
 <!-- Second Container -->
-<div>
-<h4 class="container bg-2 text-center">Map</h4>
+<div id = "Map" class = "container-fluid bg-2 text-center">
+  <h4>Map</h4>
+  <br>
+  <h5 class = "line-height:3, text-justify">
+  The interactive map below higlights the River Thames as the fish migration highway, and the tributaries as the A and B roads. By clicking/tapping on
+  on the top right corner of the map the layer control will collapse allowing you to tick and untick the different map layers to show and hide. The 'Barriers' layer
+  will show all the exisiting barriers in London with each marker showing more information after clicking/tapping on it. <br><br>
+  Using the Barrier Information Form, you can help us confirm the type and exact location of barriers with photo evidence. </h5>
 </div>
+
+<!-- Second Container -->
 <div id = "map" class="container bg-2">
 <script>
 var map = L.map('map',{
@@ -178,15 +186,15 @@ gestureHandlingOptions: {
         }
     }
 });
-var Hydda_Base = L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/base/{z}/{x}/{y}.png', {
-	maxZoom: 18,
-	attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
 var Mapbox = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 maxZoom: 19,
 id: 'mapbox.streets',
 accessToken: 'pk.eyJ1Ijoid2FuZGFib2RuYXIiLCJhIjoiY2p0NXU3djg5MDNrZzN6bnpoaGx6MmMzMCJ9.1ZSsBHP1VNrORNIN_p0_Xg'
+}).addTo(map);
+var Hydda_Base = L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/base/{z}/{x}/{y}.png', {
+	maxZoom: 18,
+	attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 var geojsonLayerBarriers = new L.GeoJSON.AJAX("https://raw.githubusercontent.com/ThamesEstuaryPartnership/barrier/master/barriers.geojson", {
   pointToLayer: function(feature,yx){
@@ -240,8 +248,8 @@ var geojsonLayerBoroughs = new L.GeoJSON.AJAX("https://raw.githubusercontent.com
 });
 geojsonLayerBoroughs.addTo(map);
 var baseMaps = {
-  'Rivers': Hydda_Base,
-  'Mapbox': Mapbox
+  'Mapbox': Mapbox,
+  'Rivers': Hydda_Base
 };
 var groupedOverlays = {
         "Barriers to fish migration": {
@@ -259,7 +267,7 @@ var bounds = L.latLngBounds([
   [51.7143, -0.5452],
   [51.3195, 0.2898],
   [51.3195, 0.2898],
-  [51.3668, -0.5452]]);
+  [51.2999, -0.5452]]);
 map.fitBounds(bounds);
 L.easyButton('<i class="fa fa-home" style="font-size:15px;"></i>',
 function(){
