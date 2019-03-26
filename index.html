@@ -237,7 +237,7 @@ var geojsonLayerB = new L.GeoJSON.AJAX("https://raw.githubusercontent.com/Thames
 geojsonLayerB.addTo(map);
 var BoroughsStyle = {
         "color": "#7fbf9f",
-        "weight": 1,
+        "weight": 0,
         "opacity": 1,
         "fillOpacity": .2,
         "fillColor": "#7fbf9f"
@@ -266,7 +266,7 @@ var bounds = L.latLngBounds([
   [51.7143, -0.5452],
   [51.3195, 0.2898],
   [51.3195, 0.2898],
-  [51.3111, -0.5452]]);
+  [51.2999, -0.5452]]);
 map.fitBounds(bounds);
 L.easyButton('<i class="fa fa-home" style="font-size:15px;"></i>',
 function(){
