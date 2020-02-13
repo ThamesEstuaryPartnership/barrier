@@ -1,1 +1,1 @@
-<img src="pic_trulli.jpg" alt="Italian Trulli">
+<img src="https://raw.githubusercontent.com/ThamesEstuaryPartnership/barrier/master/Untitled.png" alt="Greater Thames Estuary Fish Migration Roadmap">
