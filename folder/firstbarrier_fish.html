@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>First barriers: eel and fish</title>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        #titleDiv {
+            padding: 10px;
+        }
+
+        #titleText {
+            font-size: 14pt;
+            font-weight: 60;
+            padding-bottom: 10px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.17/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.17/"></script>
+
+    <script>
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/layers/VectorTileLayer",
+            "esri/layers/TileLayer",
+            "esri/widgets/LayerList",
+            "esri/widgets/Swipe",
+            "esri/widgets/Expand",
+            "esri/layers/FeatureLayer",
+            "esri/renderers/UniqueValueRenderer",
+            "esri/widgets/Home"
+        ], function (Map, MapView, VectorTileLayer, TileLayer, LayerList, Swipe, Expand, FeatureLayer, UniqueValueRenderer, Home) {
+
+            var map = new Map();
+
+            var view = new MapView({
+                container: "viewDiv",
+                map: map,
+                center: [0.15, 51.6],
+                zoom: 8,
+                constraints: {
+                    maxZoom: 17,
+                    minZoom: 8
+                }
+            });
+
+            var tileLayer = new VectorTileLayer({
+                url:
+                    "https://tep-thames.maps.arcgis.com/sharing/rest/content/items/ebe4db0d43d5473eabfa5734f683b1b1/resources/styles/root.json"
+            });
+            map.add(tileLayer);
+
+            var renderer = {
+                type: "unique-value",
+                field: "Connect",
+                defaultSymbol: { type: "simple-line" },
+                uniqueValueInfos: [{
+
+                    value: "Open",
+                    symbol: {
+                        type: "simple-line",
+                        color: "green",
+                        width: 2
+                    }
+                }, {
+
+                    value: "Closed",
+                    symbol: {
+                        type: "simple-line",
+                        color: "red",
+                        width: 2
+                    }
+                }],
+            };
+
+            var eel = new FeatureLayer({
+                url:
+                    "https://services6.arcgis.com/cFcfnHqSdtEfYu8A/arcgis/rest/services/fishconnect/FeatureServer/0",
+                renderer: renderer
+            });
+            map.add(eel);
+
+            var fish = new FeatureLayer({
+                url:
+                    "https://services6.arcgis.com/cFcfnHqSdtEfYu8A/arcgis/rest/services/fish_connect/FeatureServer/0",
+                renderer: renderer
+            });
+
+            map.add(fish);
+
+            var thames = new FeatureLayer({
+                url:
+                    "https://services6.arcgis.com/cFcfnHqSdtEfYu8A/arcgis/rest/services/River_Thames/FeatureServer/0",
+                renderer: {
+                    type: "simple",
+                    symbol: {
+                        type: "simple-fill",
+                        color: "green"
+                    }
+                }
+            });
+
+            map.add(thames);
+
+            const layerList = new LayerList({
+                view: view
+            });
+
+            const llExpand = new Expand({
+                view: view,
+                content: layerList,
+                expanded: false
+            });
+
+            const swipe = new Swipe({
+                leadingLayers: [eel],
+                trailingLayers: [fish],
+                position: 35,
+                view: view
+            });
+
+            var homeBtn = new Home({
+                view: view
+            });
+
+            view.ui.add(swipe);
+            view.ui.add("titleDiv", "top-right");
+            view.ui.add(homeBtn, "top-left");
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="viewDiv"></div>
+    <div id="titleDiv" class="esri-widget">
+        <div id="titleText">Scenario: addressing first barriers (fish)</div>
+        <div>Swipe from left to right to see before and after</div>
+    </div>
+</body>
+
+</html>
