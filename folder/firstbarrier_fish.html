@@ -88,14 +88,14 @@
 
             var eel = new FeatureLayer({
                 url:
-                    "https://services6.arcgis.com/cFcfnHqSdtEfYu8A/arcgis/rest/services/fishconnect/FeatureServer/0",
+                    "https://services6.arcgis.com/cFcfnHqSdtEfYu8A/arcgis/rest/services/fish_connect/FeatureServer/0",
                 renderer: renderer
             });
             map.add(eel);
 
             var fish = new FeatureLayer({
                 url:
-                    "https://services6.arcgis.com/cFcfnHqSdtEfYu8A/arcgis/rest/services/fish_connect/FeatureServer/0",
+                    "https://services6.arcgis.com/cFcfnHqSdtEfYu8A/arcgis/rest/services/fishconnect/FeatureServer/0",
                 renderer: renderer
             });
 
@@ -128,7 +128,7 @@
             const swipe = new Swipe({
                 leadingLayers: [eel],
                 trailingLayers: [fish],
-                position: 35,
+                position: 50,
                 view: view
             });
 
